@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_login"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="140dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/logo" />
+
+
+    <TextView
+        android:id="@+id/tvAppName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="软件信息发布系统"
+        android:textColor="#1F4E79"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/llSetting"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_marginTop="35dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/bg_et"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <ImageView
+                android:id="@+id/imgIp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/icon_ip" />
+
+            <View
+                android:layout_width="2px"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/imgLoginUser"
+                android:background="@color/main_blue" />
+
+            <EditText
+                android:id="@+id/etIp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_toLeftOf="@id/imgDeleteName"
+                android:layout_toRightOf="@id/view"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请输入ip"
+                android:inputType="number|textUri"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/main_blue"
+                android:textColorHint="@color/lightgrey"
+                android:textCursorDrawable="@drawable/cursor_login"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/seletor_delete_login" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/bg_et"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/icon_port" />
+
+            <View
+                android:layout_width="2px"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/main_blue" />
+
+            <EditText
+                android:id="@+id/etPort"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请输入http端口"
+                android:inputType="number|textUri"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/main_blue"
+                android:textColorHint="@color/lightgrey"
+                android:textCursorDrawable="@drawable/cursor_login"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/seletor_delete_login" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/bg_et"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/icon_port" />
+
+            <View
+                android:layout_width="2px"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/main_blue" />
+
+            <EditText
+                android:id="@+id/etSocketPort"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请输入socket端口"
+                android:inputType="number|textUri"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/main_blue"
+                android:textColorHint="@color/lightgrey"
+                android:textCursorDrawable="@drawable/cursor_login"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/seletor_delete_login" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="50dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <Button
+                android:id="@+id/btnGetArea"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_btn_login"
+                android:text="获取位置"
+                android:textColor="#1296db"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btnGo"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_btn_login"
+                android:text="直接进入"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlInputContainer"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:layout_marginTop="50dp">
+
+        <LinearLayout
+            android:id="@+id/llprogress"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rotate_layout_bg"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/llInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/bg_et"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <ImageView
+                    android:id="@+id/imgLoginUser"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/user" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="2px"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imgLoginUser"
+                    android:background="@color/main_blue" />
+
+                <EditText
+                    android:id="@+id/etUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_toLeftOf="@id/imgDeleteName"
+                    android:layout_toRightOf="@id/view"
+                    android:background="@null"
+                    android:hint="请输入账号"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/main_blue"
+                    android:textColorHint="@color/lightgrey"
+                    android:textCursorDrawable="@drawable/cursor_login"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/imgDeleteName"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/seletor_delete_login" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/bg_et"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <ImageView
+                    android:id="@+id/imgLoginPsw"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/psw" />
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="2px"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imgLoginPsw"
+                    android:background="@color/main_blue" />
+
+                <EditText
+                    android:id="@+id/etUserPsw"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_toLeftOf="@id/imgDeletePsw"
+                    android:layout_toRightOf="@id/view1"
+                    android:background="@null"
+                    android:hint="请输入密码"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/main_blue"
+                    android:textColorHint="@color/lightgrey"
+                    android:textCursorDrawable="@drawable/cursor_login"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/imgDeletePsw"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/seletor_delete_login" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llBtnContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_btn_login"
+            android:text="登录"
+            android:textColor="#1296db"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_btn_login"
+            android:text="注册"
+            android:textColor="#1296db"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,2 @@
+include ':app', ':notification'
+rootProject.name='PluginDemo'

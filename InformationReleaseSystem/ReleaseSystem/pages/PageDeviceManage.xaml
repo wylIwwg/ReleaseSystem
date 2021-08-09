@@ -1,0 +1,38 @@
+﻿<Page x:Class="ReleaseSystem.pages.PageDeviceManage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="clr-namespace:ReleaseSystem.ui" 
+      xmlns:bean="clr-namespace:ReleaseSystem.bean" 
+      xmlns:input="clr-namespace:System.Windows.Input;assembly=PresentationCore"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d"  Loaded="pageDeviceManage_Loaded" IsVisibleChanged="PageDeviceManage_IsVisibleChanged"
+        x:Name="pageDeviceManage"
+	Title="设备管理">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Height="40" Grid.Row="0" Width="1000">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="名称" Grid.Column="0" Foreground="Black" FontSize="20"></Label>
+            <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="ip地址" Grid.Column="1" Foreground="Black" FontSize="20"></Label>
+            <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="mac地址" Grid.Column="2" Foreground="Black" FontSize="20"></Label>
+            <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="设备类型" Grid.Column="3" Foreground="Black" FontSize="20"></Label>
+            <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="是否在线" Grid.Column="4" Foreground="Black" FontSize="20"></Label>
+        </Grid>
+
+        <TreeView Grid.Row="1" Width="1000"  x:Name="tree"  >
+
+        </TreeView>
+
+    </Grid>
+</Page>

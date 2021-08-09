@@ -1,0 +1,197 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:src="clr-namespace:ReleaseSystem.utils"
+                       xmlns:bean="clr-namespace:ReleaseSystem.bean"
+                        xmlns:convert="clr-namespace:ReleaseSystem.style"
+                    xmlns:local="clr-namespace:ReleaseSystem.style">
+
+
+    <src:ItemTextColorConverter x:Key="txtForegroundConverter"></src:ItemTextColorConverter>
+
+    <src:ItemTextContentConverter x:Key="txtContentConverter"></src:ItemTextContentConverter>
+
+    <src:WindowHeigthConverter x:Key="heigthConverter"></src:WindowHeigthConverter>
+    <src:WindowWidthConverter x:Key="widthConverter"></src:WindowWidthConverter>
+
+
+    <Style  x:Key="DefaultTreeViewItem" TargetType="{x:Type TreeViewItem}">
+        <Setter Property="MinHeight" Value="35" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TreeViewItem}"  >
+                    <ControlTemplate.Resources>
+                        <convert:IndentConverter  x:Key="indentConverter"/>
+                    </ControlTemplate.Resources>
+                    <Grid Background="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Border Name="itemBackground" Background="{TemplateBinding Background}"  
+                                BorderBrush="{TemplateBinding BorderBrush}"  
+                                BorderThickness="{TemplateBinding BorderThickness}"  
+                                Padding="{TemplateBinding Padding}">
+                            <Grid Background="Transparent">
+                                <Grid x:Name="ItemRoot" Margin="{Binding Converter={StaticResource indentConverter},RelativeSource={RelativeSource TemplatedParent}}" Background="Transparent">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="16" />
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <ToggleButton x:Name="Expander" HorizontalAlignment="Left" ClickMode="Press" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}">
+                                        <ToggleButton.Style>
+                                            <Style TargetType="{x:Type ToggleButton}">
+                                                <Setter Property="Focusable" Value="False"/>
+                                                <Setter Property="Width" Value="16"/>
+                                                <Setter Property="Height" Value="16"/>
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                            <Border Background="Transparent" Height="16" Padding="5" Width="16">
+                                                                <Path x:Name="ExpandPath" Data="M0,0 L0,6 L6,0 z" Fill="#66645e" Stroke="#66645e">
+                                                                    <Path.RenderTransform>
+                                                                        <RotateTransform Angle="135" CenterY="3" CenterX="3"/>
+                                                                    </Path.RenderTransform>
+                                                                </Path>
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsChecked" Value="True">
+                                                                    <Setter Property="RenderTransform" TargetName="ExpandPath">
+                                                                        <Setter.Value>
+                                                                            <RotateTransform Angle="180" CenterY="3" CenterX="3"/>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                    <Setter Property="Fill" TargetName="ExpandPath" Value="#66645e"/>
+                                                                    <Setter Property="Stroke" TargetName="ExpandPath" Value="#66645e"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Stroke" TargetName="ExpandPath" Value="#66645e"/>
+                                                                    <Setter Property="Fill" TargetName="ExpandPath" Value="#66645e"/>
+                                                                </Trigger>
+                                                                <MultiTrigger>
+                                                                    <MultiTrigger.Conditions>
+                                                                        <Condition Property="IsMouseOver" Value="True"/>
+                                                                        <Condition Property="IsChecked" Value="True"/>
+                                                                    </MultiTrigger.Conditions>
+                                                                    <Setter Property="Stroke" TargetName="ExpandPath" Value="#66645e"/>
+                                                                    <Setter Property="Fill" TargetName="ExpandPath" Value="#66645e"/>
+                                                                </MultiTrigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </ToggleButton.Style>
+                                    </ToggleButton>
+                                    <ContentPresenter Grid.Column="1" x:Name="PART_Header" ContentSource="Header"  
+                                                 HorizontalAlignment="Stretch" >
+
+                                    </ContentPresenter>
+                                </Grid>
+                            </Grid>
+
+                        </Border>
+                        <ItemsPresenter x:Name="ItemsHost" Grid.Row="1"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsGrouping}" Value="false">
+                            <Setter Property="Visibility" TargetName="Expander" Value="Hidden"/>
+                        </DataTrigger>
+
+
+                        <Trigger Property="HasItems" Value="False">
+                            <Setter Property="Visibility" TargetName="Expander" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="IsExpanded" Value="False">
+                            <Setter Property="Visibility" TargetName="ItemsHost" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="Red"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="DefaultTreeView" TargetType="{x:Type TreeView}">
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+        <Setter Property="VirtualizingStackPanel.IsVirtualizing" Value="True"></Setter>
+        <Setter Property="VirtualizingStackPanel.VirtualizationMode" Value="Recycling" />
+        <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource DefaultTreeViewItem}"></Setter>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel IsItemsHost="True" Margin="0"/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <HierarchicalDataTemplate DataType="{x:Type bean:DeviceBean}" ItemsSource="{Binding Path=children}">
+        <Grid  Background="Transparent">
+            <Grid.Resources>
+
+                <convert:BoolToVisible x:Key="boolToVisible"/>
+
+                <convert:VisibleToReverse x:Key="visibleToReverse"/>
+                <!--判断是否是同一个诊室-->
+                <convert:SameToEnable x:Key="sameToReverse"/>
+
+
+                <convert:ItemEnableBackgroud x:Key="bgToReverse"/>
+            </Grid.Resources>
+            <Grid MinHeight="35" MaxHeight="48" x:Name="child"
+                
+                  Tag="{Binding}" 
+                  Background="{Binding IsDepartClinicSame,Converter={StaticResource bgToReverse}}" 
+                  IsEnabled="{Binding IsDepartClinicSame,Converter={StaticResource sameToReverse}}"
+                  Visibility="{Binding Visibility,ElementName=parent,Converter={StaticResource visibleToReverse}}" 
+                  >
+                <Grid Height="40"   >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding name}" Grid.Column="0" Foreground="Black" FontSize="20"></Label>
+                    <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding ip}"  Grid.Column="1" Foreground="Black" FontSize="20"></Label>
+                    <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding mac}"  Grid.Column="2" Foreground="Black" FontSize="20"></Label>
+                    <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding type}"  Grid.Column="3" Foreground="Black" FontSize="20"></Label>
+                    <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding online}"  Grid.Column="4"  FontSize="20">
+                        <Label.Foreground>
+                            <Binding Converter="{StaticResource txtForegroundConverter}" Path="Tag" ElementName="lbName"></Binding>
+                        </Label.Foreground>
+
+                    </Label>
+                </Grid>
+            </Grid>
+            <Grid MinHeight="35" x:Name="parent"  Background="Transparent" HorizontalAlignment="Left" Visibility="{Binding IsGrouping,Converter={StaticResource boolToVisible}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding name}"  Grid.Column="0"  FontSize="25">
+
+                </Label>
+            </Grid>
+        </Grid>
+
+    </HierarchicalDataTemplate>
+
+
+
+
+</ResourceDictionary>
